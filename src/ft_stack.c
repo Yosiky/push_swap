@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_create.c                                  :+:      :+:    :+:   */
+/*   ft_stack.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 17:53:36 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/03 18:16:05 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:33:28 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_stack	*ft_stknew(size_t size)
 	return (stk);
 }
 
-void	*ft_stkpush(t_stack *stk, int64_t value)
+void	ft_stkpush(t_stack *stk, int64_t value)
 {
 	stk->arr[stk->begin++] = value;
 }

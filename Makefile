@@ -4,14 +4,16 @@ CFLAGS			=	-Wextra -Werror -Wall
 DIR_OBJ			=	obj
 DIR_SRC			=	src
 
-HEADERS			=	ft_push_swap.h		\
-					ft_stack.h			\
+HEADERS			=	src/ft_push_swap.h	\
+					src/ft_stack.h		\
 
 SRC				=	main				\
 					ft_atoi				\
 					ft_stack
 
 OBJ				=	$(addprefix $(DIR_OBJ)/,$(SRC:=.o))
+
+NAME			=	push_swap
 
 all:				$(DIR_OBJ) $(NAME)
 

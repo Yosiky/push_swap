@@ -6,7 +6,7 @@ static int	ft_isspace(char c)
 			c == '\t' || c == '\v' || c == ' ');
 }
 
-static int	ft_issing(char c)
+static int	ft_issign(char c)
 {
 	return (c == '-' || c == '+');
 }
@@ -38,6 +38,6 @@ int	ft_atoi(int64_t *ptr_res, char *res)
 		if (*ptr_res < 0)
 			return (3);
 	}
-	*ptr_res *= sing;
+	*ptr_res *= sign;
 	return (0);
 }

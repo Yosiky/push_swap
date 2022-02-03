@@ -6,7 +6,7 @@ static int	check_input_data(t_stack *stk, int count, char **str)
 
 	while (count-- > 0)
 	{
-		if (ft_atoi(&value, str[count]) || ft_stkfind(*stk, value))
+		if (ft_atoi(&value, str[count]) || ft_stkfind(stk, value))
 			return (1 || ft_stkclear(stk)); 
 		else
 			ft_stkpush(stk, value);
