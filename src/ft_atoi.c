@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/03 18:44:15 by eestelle          #+#    #+#             */
+/*   Updated: 2022/02/03 18:46:39 by eestelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_push_swap.h"
 
 static int	ft_isspace(char c)
@@ -20,7 +32,7 @@ int	ft_atoi(int64_t *ptr_res, char *res)
 {
 	int64_t	sign;
 
-	if (ptr_res == NULL)
+	if (res == NULL || ptr_res == NULL)
 		return (1);
 	sign = 1;
 	*ptr_res = 0;
@@ -37,6 +49,7 @@ int	ft_atoi(int64_t *ptr_res, char *res)
 			return (2);
 		if (*ptr_res < 0)
 			return (3);
+		res++;
 	}
 	*ptr_res *= sign;
 	return (0);
