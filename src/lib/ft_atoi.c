@@ -1,12 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:59:47 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/03 16:00:26 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/03 17:00:50 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +17,7 @@ static int	ft_isspace(char c)
 		|| c == '\t' || c == '\v' || c == ' ');
 }
 
-static int	ft_issing(char c)
+static int	ft_issign(char c)
 {
 	return (c == '-' || c == '+');
 }
@@ -49,7 +48,8 @@ int	ft_atoi(int64_t *ptr_res, char *res)
 			return (2);
 		if (*ptr_res < 0)
 			return (3);
+		res++;
 	}
-	*ptr_res *= sing;
+	*ptr_res *= sign;
 	return (0);
 }

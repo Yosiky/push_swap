@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:22:45 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/03 15:17:49 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:57:50 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@
 # include "lib/ft_lib_mod.h"
 # include "lst/ft_lst.h"
 
-int	check_lst_sort(t_lst *ptr);
 
 #endif

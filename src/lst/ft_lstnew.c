@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:22:49 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/03 15:58:58 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/03 17:03:07 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_lst	*ft_lstnew_char(void *value)
 	if (ptr == NULL)
 		return (NULL);
 	ptr->next = NULL;
-	if (!ft_strcpy(ptr->value.b, (char *)value))
+	if (!ft_strcpy(ptr->data.b, (char *)value))
 		return (ptr);
 	free(ptr);
 	return (NULL);
