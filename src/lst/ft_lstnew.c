@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:22:49 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/03 15:28:27 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/03 15:58:58 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,12 @@ int	ft_lstadd(t_lst **ptr, t_lst *value)
 	if (ptr == NULL)
 		return (1);
 	else if (*ptr != NULL)
+	{
 		if (value == NULL)
 			return (2);
 		else
 			value->next = *ptr;
+	}
 	*ptr = value;
-	return (0):
+	return (0);
 }

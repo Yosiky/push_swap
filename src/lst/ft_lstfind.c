@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lib_mod.h                                       :+:      :+:    :+:   */
+/*   ft_lstfind.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 15:13:55 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/03 15:59:24 by eestelle         ###   ########.fr       */
+/*   Created: 2022/02/03 15:49:43 by eestelle          #+#    #+#             */
+/*   Updated: 2022/02/03 15:52:04 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIB_MOD_H
-# define FT_LIB_MOD_H
+#include "ft_lst.h"
 
-int	ft_atoi(int64_t *ptr_res, char *res);
-int	ft_strcpy(char *res, char *src);
-
-#endif
+t_lst	*ft_lstfind(t_lst *ptr, int64_t value)
+{
+	while (ptr != NULL)
+	{
+		if (ptr->data.a == value)
+			return (ptr);
+		ptr = ptr->next;
+	}
+	return (NULL);
+}
