@@ -1,31 +1,31 @@
 #include "ft_push_swap.h"
 
-static int	check_input_data(t_list **ptr, int count, char **str)
+static int	check_input_data(t_stack *stk, int count, char **str)
 {
 	int64_t	value;
 
 	while (count-- > 0)
 	{
-		if (ft_atoi(&value, str[count]) || ft_lstfind(*ptr, value) != NULL)
-			return (1 || ft_lstdel(lst)); 
-		else 
-			ft_lstadd(ptr, value);
+		if (ft_atoi(&value, str[count]) || ft_stkfind(*stk, value))
+			return (1 || ft_stkclear(stk)); 
+		else
+			ft_stkpush(stk, value);
 	}
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	t_list	*ptr_lst;
-	t_list	*ptr_history;
+	t_stack	*stk;
 
-	ptr_lst = NULL;
-	if (check_input_data(&ptr_lst, argc, argv))
+	stk = ft_stknew(argc);
+	if (check_input_data(stk, argc, argv))
 		write(1, "Error\n", 6);
-	else if (check_lst_sort(ptr_lst))
+	else if (ft_stk_checksort(stk))
 	{
-		ft_sort(&ptr_lst, &ptr_history);
-		optimization(&ptr_history);
+		write(1, "// to do\n", 9);
+		//ft_sort(&ptr_lst, &ptr_history);
+		//optimization(&ptr_history);
 	}
 	return (0);
 }
