@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.h                                     :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 14:22:45 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/03 15:17:49 by eestelle         ###   ########.fr       */
+/*   Created: 2022/02/03 15:32:42 by eestelle          #+#    #+#             */
+/*   Updated: 2022/02/03 15:34:41 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUSH_SWAP_H
-# define FT_PUSH_SWAP_H
+#include "ft_lst.h"
 
-# include <unistd.h>
-# include <malloc.h>
-# include <stdint.h>
-# include "lib/ft_lib_mod.h"
-# include "lst/ft_lst.h"
+int	ft_lstclear(t_lst *ptr)
+{
+	t_lst	*head;
 
-int	check_lst_sort(t_lst *ptr);
-
-#endif
+	while (ptr != NULL)
+	{
+		head = ptr->next;
+		free(ptr);
+		ptr = head;
+	}
+	return (0);
+}

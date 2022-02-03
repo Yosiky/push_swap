@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/03 14:22:36 by eestelle          #+#    #+#             */
+/*   Updated: 2022/02/03 15:32:26 by eestelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_push_swap.h"
 
 static int	check_input_data(t_list **ptr, int count, char **str)
@@ -7,9 +19,9 @@ static int	check_input_data(t_list **ptr, int count, char **str)
 	while (count-- > 0)
 	{
 		if (ft_atoi(&value, str[count]) || ft_lstfind(*ptr, value) != NULL)
-			return (1 || ft_lstdel(lst)); 
-		else 
-			ft_lstadd(ptr, value);
+			return (1 || ft_lstclear(*ptr)); 
+		if (!ft_lstadd(ptr, ft_lstnew_int((void *)(&value))))
+			return (1 || ft_lstclear(*ptr));
 	}
 	return (0);
 }

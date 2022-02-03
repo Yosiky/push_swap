@@ -1,4 +1,4 @@
-#include "ft_push_swap.h"
+#include "ft_lib_mod.h"
 
 static int	ft_isspace(char c)
 {
