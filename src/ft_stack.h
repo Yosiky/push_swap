@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 17:36:32 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/03 18:33:40 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/04 13:33:55 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_stack
 {
 	size_t	begin;
 	size_t	end;
+	size_t	count;
 	size_t	size;
 	int64_t	*arr;
 }	t_stack;
@@ -31,5 +32,9 @@ void	ft_stkpush(t_stack *stk, int64_t	value);
 int		ft_stkfind(t_stack *stk, int64_t value);
 int		ft_stkclear(t_stack *stk);
 int		ft_stk_checksort(t_stack *stk);
+void	ft_stks(t_stack *stk);
+void	ft_stkr(t_stack *stk);
+void	ft_stkrr(t_stack *stk);
+void	ft_stkpop(t_stack *stk);
 
 #endif
