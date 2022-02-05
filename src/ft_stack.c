@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 17:53:36 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/04 13:08:00 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/05 15:59:04 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stack	*ft_stknew(size_t size)
 	stk->begin = 0;
 	stk->end = 0;
 	stk->size = size;
-	stk->arr = (int64_t *)malloc(sizeof(int64_t));
+	stk->arr = (int64_t *)malloc(sizeof(int64_t) * stk->size);
 	if (stk->arr == NULL)
 	{
 		free(stk);

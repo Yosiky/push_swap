@@ -1,4 +1,14 @@
 #include "ft_push_swap.h"
+#include "stdio.h"
+
+void	ft_print(t_stack *stk)
+{
+	for (size_t i = 0; i < stk->count; i++)
+	{
+		printf("%ld\t", stk->arr[(stk->end + i) % stk->size]);
+	}
+	printf("\n");
+}
 
 static int	check_input_data(t_stack *stk, int count, char **str)
 {
