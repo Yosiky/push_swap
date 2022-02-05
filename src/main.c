@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/05 16:18:05 by eestelle          #+#    #+#             */
+/*   Updated: 2022/02/05 18:57:33 by eestelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_push_swap.h"
 #include "stdio.h"
 
@@ -33,11 +45,18 @@ int	main(int argc, char **argv)
 	stk = ft_stknew(argc);
 	if (check_input_data(stk, argc - 1, argv + 1))
 		write(1, "Error\n", 6);
-	else if (ft_stk_checksort(stk))
+	if (argc > 2)
 	{
+		if (argc == 3)
+			ft_size_two(stk);
+		else if (argc == 4)
+			ft_size_three(stk);
+	//	else
+	//		ft_sort(stk);
+	}
 		//ft_sort(&ptr_lst, &ptr_history);
 		//optimization(&ptr_history);
-	}
+	ft_print(stk);
 	ft_stkclear(stk);
 	return (0);
 }

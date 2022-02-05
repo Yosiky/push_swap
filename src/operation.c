@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:34:08 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/05 15:55:08 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:35:19 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_swap(int64_t *a, int64_t *b)
 	*b = c;
 }
 
-void	ft_stks(t_stack *stk)
+void	ft_stks(t_stack *stk, const char *str, size_t len)
 {
 	if (stk->count >= 2) 
 	{
@@ -31,10 +31,12 @@ void	ft_stks(t_stack *stk)
 			ft_swap(&(stk->arr[0]), &(stk->arr[stk->size - 1]));
 		else
 			ft_swap(&(stk->arr[stk->begin - 2]), &(stk->arr[stk->begin - 1]));
+		if (str != NULL)
+			write(1, str, len);
 	}
 }
 
-void	ft_stkr(t_stack *stk)
+void	ft_stkr(t_stack *stk, const char *str, size_t len)
 {
 	if (stk->count < 2)
 		return ;
@@ -43,9 +45,11 @@ void	ft_stkr(t_stack *stk)
 	if (stk->begin == 0)
 		stk->begin = stk->size;
 	stk->arr[--stk->end] = stk->arr[--stk->begin];
+	if (str != NULL)
+		write(1, str, len);
 }
 
-void	ft_stkrr(t_stack *stk)
+void	ft_stkrr(t_stack *stk, const char *str, size_t len)
 {
 	if (stk->count < 2)
 		return ;
@@ -54,23 +58,32 @@ void	ft_stkrr(t_stack *stk)
 	stk->arr[stk->begin++] = stk->arr[stk->end++];
 	if (stk->end == stk->size)
 		stk->end = 0;
+	if (str != NULL)
+		write(1, str, len);
 }
 
-t_pair	ft_stkpop(t_stack *stk)
+t_pair	ft_stkpop(t_stack *src, t_stack *res, const char *str, size_t len)
 {
-	t_pair	res;
+	t_pair	ret;
 
-	if (stk->count == 0)
+	if (src == NULL || src->count == 0)
 	{
-		res.first = 0;
-		res.second = 0;
+		ret.first = 0;
+		ret.second = 0;
 	}
 	else
 	{
-		--stk->count;
-		if (stk->begin == 0)
-			stk->begin = stk->size;
-		res.first = stk->arr[--stk->begin];
+		--src->count;
+		if (src->begin == 0)
+			src->begin = src->size;
+		ret.first = src->arr[--src->begin];
+		ret.second = 1;
+		if (res != NULL)
+		{
+			ft_stkpush(res, ret.first);
+			if (str == NULL)
+				write(1, str, len);
+		}
 	}
-	return (res);
+	return (ret);
 }

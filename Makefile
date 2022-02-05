@@ -10,7 +10,8 @@ HEADERS			=	src/ft_push_swap.h	\
 SRC				=	main				\
 					ft_atoi				\
 					ft_stack			\
-					operation
+					operation			\
+					hardcode
 
 OBJ				=	$(addprefix $(DIR_OBJ)/,$(SRC:=.o))
 
