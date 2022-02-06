@@ -21,7 +21,8 @@ SRC				=	main				\
 					ft_find_min_score	\
 					ft_insert			\
 					ft_insert_togher	\
-					ft_insert_r_rr
+					ft_insert_r_rr		\
+					ft_offset
 
 OBJ				=	$(addprefix $(DIR_OBJ)/,$(SRC:=.o))
 

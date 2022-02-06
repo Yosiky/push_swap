@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 13:45:19 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 19:23:45 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 19:53:21 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_insert_rrr(t_stack *a, t_stack *b, int64_t count);
 void	ft_insert_rr(t_stack *a, t_stack *b, int64_t count);
 void	ft_insert_rn(t_stack *s, int64_t count, const char *str, size_t len);
 void	ft_insert_rrn(t_stack *s, int64_t count, const char *str, size_t len);
+void	ft_offset(t_stack *s);
 
 //delete
 void	ft_print(t_stack *s);

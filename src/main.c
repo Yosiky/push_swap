@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:18:05 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 19:36:01 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 19:57:36 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ int	main(int argc, char **argv)
 	else
 		ft_sort(stk);
 	}
-	ft_print_arr(stk);
+	ft_offset(stk);
+	ft_print(stk);
 	ft_stkclear(stk);
 	return (0);
 }
