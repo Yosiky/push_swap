@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 13:45:19 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 17:07:58 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 18:38:26 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ int		ft_score_clear(t_score *score);
 void	ft_optimization(t_score *score, size_t size);
 size_t	ft_find_min_score(t_score *score, t_stack *stk);
 void	ft_insert(t_stack *a, t_stack *b, t_score *score);
+void	ft_insert_rrr(t_stack *a, t_stack *b, int64_t count);
+void	ft_insert_rr(t_stack *a, t_stack *b, int64_t count);
+void	ft_insert_rn(t_stack *s, int64_t count, const char *str, size_t len);
+void	ft_insert_rrn(t_stack *s, int64_t count, const char *str, size_t len);
 
 //delete
 void	ft_print(t_stack *s);

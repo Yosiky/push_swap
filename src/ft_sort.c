@@ -1,7 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_sort.c                                          :+:      :+:    :+:   */
+/*                                                        :::      ::::::::   */ /*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -81,11 +80,6 @@ int	ft_sort(t_stack *sta)
 		return (1);
 	if (ft_btoa(stb, sta))
 		return (!ft_stkclear(stb));
-	// delete
-	printf("sta:\t");
-	ft_print(sta);
-	printf("stb:\t");
-	ft_print(stb);
 	ft_stkclear(stb);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:18:05 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 15:01:07 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 18:43:00 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 	if (stk == NULL)
 		return (1 || write(1, "Error\n", 6));
 	if (check_input_data(stk, argc - 1, argv + 1))
-		write(1, "Error\n", 6);
+		return (write(1, "Error\n", 6) || 1);
 	if (argc > 2)
 	{
 		if (argc == 3)
@@ -64,8 +64,6 @@ int	main(int argc, char **argv)
 	else
 		ft_sort(stk);
 	}
-		//ft_sort(&ptr_lst, &ptr_history);
-		//optimization(&ptr_history);
 	ft_print(stk);
 	ft_stkclear(stk);
 	return (0);
