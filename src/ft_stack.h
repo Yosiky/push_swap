@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 17:36:32 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 13:12:34 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 15:16:20 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@
 # include <malloc.h>
 # include <stdlib.h>
 
-typedef struct s_num
+typedef struct s_pair
 {
-	int64_t	score_A_r;
-	int64_t	score_A_rr;
-	int64_t	score_B_r;
-	int64_t	score_B_rr;
-}	t_num;
+	int64_t	first;
+	int64_t	second;
+}	t_pair;
 
 typedef struct s_stack
 {
@@ -34,16 +32,9 @@ typedef struct s_stack
 	size_t	count;
 	size_t	size;
 	int64_t	*arr;
-	t_num	*score;
 }	t_stack;
 
-typedef struct s_pair
-{
-	int64_t	first;
-	int64_t	second;
-}	t_pair;
-
-t_stack	*ft_stknew(size_t size, int flag);
+t_stack	*ft_stknew(size_t size);
 void	ft_stkpush(t_stack *stk, int64_t value, const char *str, size_t len);
 int		ft_stkfind(t_stack *stk, int64_t value);
 int		ft_stkclear(t_stack *stk);

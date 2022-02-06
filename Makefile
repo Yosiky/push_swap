@@ -15,7 +15,11 @@ SRC				=	main				\
 					ft_stkmm			\
 					ft_sort				\
 					ft_stktop			\
-					ft_stkback
+					ft_stkback			\
+					ft_score			\
+					ft_min_score		\
+					ft_find_min_score	\
+					ft_insert
 
 OBJ				=	$(addprefix $(DIR_OBJ)/,$(SRC:=.o))
 

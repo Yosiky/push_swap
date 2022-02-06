@@ -6,32 +6,47 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:18:00 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/05 18:57:16 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 14:14:09 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
+static void	init(t_stack *s, int64_t **a, size_t *b, size_t *e, size_t *c)
+{
+	*a = s->arr;
+	*b = s->begin - 1;
+	*e = s->end;
+	if (s->begin == 0)
+		*b = s->size - 1;
+	*c = *b - 1;
+	if (s->begin == 1)
+		*c = s->size - 1;
+}
+
 void	ft_size_three(t_stack *stk)
 {
 	int64_t	*arr;
+	size_t	begin;
+	size_t	end;
+	size_t	center;
 
-	arr = stk->arr;
-	if (arr[0] > arr[2] && arr[2] > arr[1])
+	init(stk, &arr, &begin, &end, &center);
+	if (arr[end] > arr[begin] && arr[begin] > arr[center])
 		ft_stks(stk, "sa\n", 3);
-	else if (arr[2] > arr[1] && arr[1] > arr[0])
+	else if (arr[begin] > arr[center] && arr[center] > arr[end])
 	{
 		ft_stks(stk, "sa\n", 3);
 		ft_stkrr(stk, "rra\n", 4);
 	}
-	else if (arr[2] > arr[0] && arr[0] > arr[1])
+	else if (arr[begin] > arr[end] && arr[end] > arr[center])
 		ft_stkr(stk, "ra\n", 3);
-	else if (arr[1] > arr[0] && arr[0] > arr[2])
+	else if (arr[center] > arr[end] && arr[end] > arr[begin])
 	{
 		ft_stks(stk, "sa\n", 3);
 		ft_stkr(stk, "ra\n", 3);
 	}
-	else if (arr[1] > arr[2] && arr[2] > arr[0])
+	else if (arr[center] > arr[begin] && arr[begin] > arr[end])
 		ft_stkrr(stk, "rra\n", 4);
 }
 
