@@ -57,11 +57,16 @@ static int	ft_btoa(t_stack *b, t_stack *a)
 		{
 			j = (b->end + i) % b->size;
 			ft_min_score_a(a, b->arr[j], &(score[j].score_a));
-			ft_min_score_b(b, j, &(score[j].score_b));
+			ft_min_score_b(b, i, &(score[j].score_b));
 			i++;
 		}
+		//ft_print_table_score(b, score);
 		ft_optimization(score, b->size);
+		//ft_print(a);
+		//ft_print(b);
+		ft_print_table_score(b, score);
 		j = ft_find_min_score(score, b);
+		//printf("min iter = %ld\n", b->arr[j]);
 		ft_insert(a, b, &score[j]);
 	}
 	ft_score_clear(score);

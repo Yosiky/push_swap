@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 13:45:19 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 18:38:26 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 19:23:45 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void	ft_insert_rrn(t_stack *s, int64_t count, const char *str, size_t len);
 //delete
 void	ft_print(t_stack *s);
 void	ft_print_arr(t_stack *s);
+void	ft_print_table_score(t_stack *s, t_score *score);
+void	ft_print_table_score_elem(t_score *score, size_t len);
 
 #endif

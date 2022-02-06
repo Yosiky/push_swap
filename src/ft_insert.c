@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:56:45 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 18:40:11 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 19:35:17 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	ft_copy_min_way(t_score *r, t_score *s)
 	ft_init_zero(r);
 	one.first = ft_max(s->score_a.first, s->score_b.first);
 	one.second = ft_max(s->score_a.second, s->score_b.second);
-	if ((one.first == one.second && s->score_ab.first > s->score_ab.second)
-		|| (one.first > one.second))
+	if ((one.first == one.second && s->score_ab.first < s->score_ab.second)
+		|| (one.first < one.second))
 	{
 		r->score_ab.first = s->score_ab.first;
 		r->score_a.first = s->score_a.first - r->score_ab.first; 
@@ -58,10 +58,10 @@ static void	ft_copy_min_way(t_score *r, t_score *s)
 		r->score_b.second = s->score_b.second - r->score_ab.second; 
 	}
 	ft_update_sum(r);
-	if (r->sum < s->score_a.first + s->score_b.second)
+	if (r->sum > s->score_a.first + s->score_b.second)
 		ft_copy(r, &r->score_a, &s->score_a, &r->score_b, &s->score_b);
 	ft_update_sum(r);
-	if (r->sum < s->score_b.first + s->score_a.second)
+	if (r->sum > s->score_b.first + s->score_a.second)
 		ft_copy(r, &r->score_b, &s->score_b, &r->score_a, &s->score_a);
 	ft_update_sum(r);
 }
@@ -72,6 +72,7 @@ void	ft_insert(t_stack *a, t_stack *b, t_score *s)
 	t_score	r;
 	
 	ft_copy_min_way(&r, s);
+	//ft_print_table_score_elem(&r, 1);
 	ft_insert_rrr(a, b, r.score_ab.second);
 	ft_insert_rr(a, b, r.score_ab.first);
 	ft_insert_rn(a, r.score_a.first, "ra\n", 3);

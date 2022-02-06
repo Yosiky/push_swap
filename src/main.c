@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:18:05 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 18:43:00 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 19:36:01 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,29 @@ void	ft_print_arr(t_stack *stk)
 		printf("%ld\t", stk->arr[i]);
 	}
 	printf("\n");
+}
+
+void	ft_print_table_score_elem(t_score *arr, size_t len)
+{
+	printf("---------------------------------------------------------------\n");
+	printf("\tind|\trr||\trrr|\tra|\trb|\trra|\trrb|\tsum|\n");
+	for (size_t i = 0; i < len; i++)
+	{
+		printf("\t%ld|\t%ld|\t%ld|\t%ld|\t%ld|\t%ld|\t%ld|\t%ld|\n", i, arr[i].score_ab.first, arr[i].score_ab.second, arr[i].score_a.first, arr[i].score_b.first, arr[i].score_a.second, arr[i].score_b.second, arr[i].sum);
+	}
+	printf("---------------------------------------------------------------\n");
+}
+
+void	ft_print_table_score(t_stack *s, t_score *arr)
+{
+	printf("---------------------------------------------------------------\n");
+	printf("\tind|\trr||\trrr|\tra|\trb|\trra|\trrb|\tsum|\n");
+	for (size_t i = 0; i < s->count; i++)
+	{
+		int j = (s->end + i) % s->size;
+		printf("\t%ld|\t%ld|\t%ld|\t%ld|\t%ld|\t%ld|\t%ld|\t%ld|\n", s->arr[j], arr[j].score_ab.first, arr[j].score_ab.second, arr[j].score_a.first, arr[j].score_b.first, arr[j].score_a.second, arr[j].score_b.second, arr[j].sum);
+	}
+	printf("---------------------------------------------------------------\n");
 }
 
 static int	check_input_data(t_stack *stk, int count, char **str)
@@ -64,7 +87,7 @@ int	main(int argc, char **argv)
 	else
 		ft_sort(stk);
 	}
-	ft_print(stk);
+	ft_print_arr(stk);
 	ft_stkclear(stk);
 	return (0);
 }
