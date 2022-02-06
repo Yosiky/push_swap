@@ -81,6 +81,7 @@ int	ft_sort(t_stack *sta)
 	mm = ft_stkmm(sta);
 	stb = ft_atob(sta, &mm);
 	ft_size_three(sta);
+	//ft_print(sta);
 	if (stb == NULL)
 		return (1);
 	if (ft_btoa(stb, sta))

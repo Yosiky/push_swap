@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:56:45 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 19:35:17 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:20:53 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ static void	ft_copy(t_score *s, t_pair *a1, t_pair *a2, t_pair *b1, t_pair *b2)
 
 static void	ft_copy_min_way(t_score *r, t_score *s)
 {
-	t_pair	one;
+//	t_pair	one;
 
 	ft_init_zero(r);
-	one.first = ft_max(s->score_a.first, s->score_b.first);
-	one.second = ft_max(s->score_a.second, s->score_b.second);
-	if ((one.first == one.second && s->score_ab.first < s->score_ab.second)
+//	one.first = ft_max(s->score_a.first, s->score_b.first);
+//	one.second = ft_max(s->score_a.second, s->score_b.second);
+	/*
+	if ((one.first == one.second && s->score_ab.first > s->score_ab.second)
 		|| (one.first < one.second))
 	{
 		r->score_ab.first = s->score_ab.first;
@@ -57,6 +58,15 @@ static void	ft_copy_min_way(t_score *r, t_score *s)
 		r->score_a.second = s->score_a.second - r->score_ab.second; 
 		r->score_b.second = s->score_b.second - r->score_ab.second; 
 	}
+	*/
+	if (s->score_a.first < s->score_a.second)
+		r->score_a.first = s->score_a.first;
+	else
+		r->score_a.second = s->score_a.second;
+	if (s->score_b.first < s->score_b.second)
+		r->score_b.first = s->score_b.first;
+	else
+		r->score_b.second = s->score_b.second;
 	ft_update_sum(r);
 	if (r->sum > s->score_a.first + s->score_b.second)
 		ft_copy(r, &r->score_a, &s->score_a, &r->score_b, &s->score_b);
@@ -72,8 +82,10 @@ void	ft_insert(t_stack *a, t_stack *b, t_score *s)
 	t_score	r;
 	
 	ft_copy_min_way(&r, s);
-	//ft_print_table_score_elem(&r, 1);
+//	ft_print_table_score_elem(&r, 1);
 	ft_insert_rrr(a, b, r.score_ab.second);
+//	ft_print(a);
+//	ft_print(b);
 	ft_insert_rr(a, b, r.score_ab.first);
 	ft_insert_rn(a, r.score_a.first, "ra\n", 3);
 	ft_insert_rn(b, r.score_b.first, "rb\n", 3);

@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:18:05 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 20:52:51 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/07 00:18:07 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,28 @@ static int	check_input_data(t_stack *stk, int count, char **str)
 	return (0);
 }
 
+void	ft_stk_offset(t_stack *s, int64_t offset)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < s->size)
+		s->arr[i++] += offset;
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stk;
+	int64_t	offset;
 
 	stk = ft_stknew(argc - 1);
 	if (stk == NULL)
 		return (0);
 	if (check_input_data(stk, argc - 1, argv + 1))
 		return (write(2, "Error\n", 6) || 1);
+	offset = (ft_stkmm(stk)).first;
+	if (offset < 0)
+		ft_stk_offset(stk, -offset);
 	if (argc > 2)
 	{
 		if (argc == 3)
@@ -89,7 +102,9 @@ int	main(int argc, char **argv)
 		ft_sort(stk);
 	}
 	ft_offset(stk);
-//	ft_print(stk);
+	if (offset < 0)
+		ft_stk_offset(stk, offset);
+	ft_print(stk);
 	ft_stkclear(stk);
 	return (0);
 }
