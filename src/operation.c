@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:34:08 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/05 18:35:19 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 12:49:26 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_stkrr(t_stack *stk, const char *str, size_t len)
 		write(1, str, len);
 }
 
-t_pair	ft_stkpop(t_stack *src, t_stack *res, const char *str, size_t len)
+t_pair	ft_stkpop(t_stack *src)
 {
 	t_pair	ret;
 
@@ -78,12 +78,6 @@ t_pair	ft_stkpop(t_stack *src, t_stack *res, const char *str, size_t len)
 			src->begin = src->size;
 		ret.first = src->arr[--src->begin];
 		ret.second = 1;
-		if (res != NULL)
-		{
-			ft_stkpush(res, ret.first);
-			if (str == NULL)
-				write(1, str, len);
-		}
 	}
 	return (ret);
 }

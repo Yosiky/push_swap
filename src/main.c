@@ -6,12 +6,11 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:18:05 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/05 18:57:33 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 13:16:25 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-#include "stdio.h"
 
 void	ft_print(t_stack *stk)
 {
@@ -33,7 +32,7 @@ static int	check_input_data(t_stack *stk, int count, char **str)
 		if (ft_stkfind(stk, value))
 			return (1); 
 		else
-			ft_stkpush(stk, value);
+			ft_stkpush(stk, value, NULL, 0);
 	}
 	return (0);
 }
@@ -42,7 +41,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stk;
 
-	stk = ft_stknew(argc);
+	stk = ft_stknew(argc, 0);
 	if (check_input_data(stk, argc - 1, argv + 1))
 		write(1, "Error\n", 6);
 	if (argc > 2)
@@ -51,8 +50,8 @@ int	main(int argc, char **argv)
 			ft_size_two(stk);
 		else if (argc == 4)
 			ft_size_three(stk);
-	//	else
-	//		ft_sort(stk);
+	else
+		ft_sort(stk);
 	}
 		//ft_sort(&ptr_lst, &ptr_history);
 		//optimization(&ptr_history);

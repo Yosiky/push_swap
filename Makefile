@@ -11,7 +11,11 @@ SRC				=	main				\
 					ft_atoi				\
 					ft_stack			\
 					operation			\
-					hardcode
+					hardcode			\
+					ft_stkmm			\
+					ft_sort				\
+					ft_stktop			\
+					ft_stkback
 
 OBJ				=	$(addprefix $(DIR_OBJ)/,$(SRC:=.o))
 

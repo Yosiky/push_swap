@@ -6,13 +6,13 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 17:53:36 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/05 15:59:04 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/06 13:12:20 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stack.h"
 
-t_stack	*ft_stknew(size_t size)
+t_stack	*ft_stknew(size_t size, int flag)
 {
 	t_stack	*stk;
 
@@ -29,15 +29,21 @@ t_stack	*ft_stknew(size_t size)
 		free(stk);
 		stk = NULL;
 	}
+	if (flag == 1)
+		stk->score = (t_num *)malloc(sizeof(t_num) * stk->size);
+	else
+		stk->score = NULL;
 	return (stk);
 }
 
-void	ft_stkpush(t_stack *stk, int64_t value)
+void	ft_stkpush(t_stack *stk, int64_t value, const char *str, size_t len)
 {
 	stk->count++;
 	if (stk->begin == stk->size)
 		stk->begin = 0;
 	stk->arr[stk->begin++] = value;
+	if (str != NULL)
+		write(1, str, len);
 }
 
 int	ft_stkfind(t_stack *stk, int64_t value)
