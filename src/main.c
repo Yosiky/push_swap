@@ -125,10 +125,10 @@ int	main(int argc, char **argv)
 		else
 			ft_sort(stk);
 		ft_offset(stk);
-		//if (!ft_check_sort(stk))
-			//write(1, "OK\n", 3);
+//		if (!ft_check_sort(stk))
+//			write(1, "OK\n", 3);
 	}
-	//ft_print(stk);
+//	ft_print(stk);
 	ft_stkclear(stk);
 	return (0);
 }
