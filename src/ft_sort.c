@@ -16,7 +16,7 @@ static	t_stack	*ft_atob(t_stack *s, t_pair *mm)
 {
 	t_stack	*res;
 	t_pair	top;
-	t_pair	back;
+//	t_pair	back;
 
 	res = ft_stknew(s->size);
 	if (res == NULL)
@@ -27,10 +27,10 @@ static	t_stack	*ft_atob(t_stack *s, t_pair *mm)
 		if (top.second && mm->first != top.first && mm->second != top.first)
 		{
 			ft_stkpop(s);
-			back = ft_stkback(res);
+		//	back = ft_stkback(res);
 			ft_stkpush(res, top.first, "pb\n", 3);
-			if (back.second && back.first < top.first)
-				ft_stkr(res, "rb\n", 3);
+			//if (back.second && back.first < top.first)
+			//	ft_stkr(res, "rb\n", 3);
 		}
 		else
 			ft_stkr(s, "ra\n", 3);
