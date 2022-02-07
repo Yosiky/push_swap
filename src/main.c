@@ -1,13 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*                                                        :::      ::::::::   */ /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:18:05 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/07 00:18:07 by eestelle         ###   ########.fr       */
-/*                                                                            */
+/*   Updated: 2022/02/07 19:14:34 by eestelle         ###   ########.fr       */ /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
@@ -62,6 +60,8 @@ static int	check_input_data(t_stack *stk, int count, char **str)
 //		printf("%s\n", str[count]);
 		if (ft_atoi(&value, str[count]))
 			return (2);
+		if (value <= -2147483649 || value >= 2147483648)
+			return (3);
 		if (ft_stkfind(stk, value))
 			return (1); 
 		else
@@ -79,6 +79,24 @@ void	ft_stk_offset(t_stack *s, int64_t offset)
 		s->arr[i++] += offset;
 }
 
+int	ft_check_sort(t_stack *stk)
+{
+	size_t	i;
+	size_t	j;
+	size_t	p;
+
+	i = 0;
+	while (i < stk->count - 1)
+	{
+		j = (stk->end + i) % stk->size;
+		p = (stk->end + i + 1) % stk->size;
+		if (stk->arr[j] < stk->arr[p])
+			return (1);
+		++i;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stk;
@@ -88,23 +106,29 @@ int	main(int argc, char **argv)
 	if (stk == NULL)
 		return (0);
 	if (check_input_data(stk, argc - 1, argv + 1))
-		return (write(2, "Error\n", 6) || 1);
-	offset = (ft_stkmm(stk)).first;
-	if (offset < 0)
-		ft_stk_offset(stk, -offset);
+	{
+		write(2, "Error\n", 6);
+		ft_stkclear(stk);
+		return (0);
+	}
 	if (argc > 2)
 	{
+		offset = (ft_stkmm(stk)).first;
+		if (!ft_check_sort(stk))
+			return (0);
+		if (offset < 0)
+			ft_stk_offset(stk, -offset);
 		if (argc == 3)
 			ft_size_two(stk);
 		else if (argc == 4)
 			ft_size_three(stk);
-	else
-		ft_sort(stk);
+		else
+			ft_sort(stk);
+		ft_offset(stk);
+		if (offset < 0)
+			ft_stk_offset(stk, offset);
 	}
-	ft_offset(stk);
-	if (offset < 0)
-		ft_stk_offset(stk, offset);
-	ft_print(stk);
+//ft_print(stk);
 	ft_stkclear(stk);
 	return (0);
 }

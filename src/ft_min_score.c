@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 15:43:23 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/07 00:04:29 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/07 19:51:36 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,17 @@ void	ft_min_score_a(t_stack *s, int64_t value, t_pair *score)
 {
 	size_t	i;
 	size_t	j;
+	size_t	p;
 
 	i = 0;
 	while (i < s->count)
 	{
 		j = (s->end + i) % s->size;
+		p = (s->end + i + 1) % s->size;
 	//	if (value >= 0)
 	//	{
-			if (s->arr[j] > value)
+
+			if (s->arr[j] > value && value > s->arr[p])
 			{
 				i++;
 				break ;

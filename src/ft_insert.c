@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:56:45 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 23:20:53 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/07 19:49:19 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_copy(t_score *s, t_pair *a1, t_pair *a2, t_pair *b1, t_pair *b2)
 {
 	ft_init_zero(s);
 	a1->first = a2->first;
-	b1->first = b2->second;
+	b1->second = b2->second;
 }
 
 static void	ft_copy_min_way(t_score *r, t_score *s)
@@ -83,9 +83,9 @@ void	ft_insert(t_stack *a, t_stack *b, t_score *s)
 	
 	ft_copy_min_way(&r, s);
 //	ft_print_table_score_elem(&r, 1);
-	ft_insert_rrr(a, b, r.score_ab.second);
 //	ft_print(a);
 //	ft_print(b);
+	ft_insert_rrr(a, b, r.score_ab.second);
 	ft_insert_rr(a, b, r.score_ab.first);
 	ft_insert_rn(a, r.score_a.first, "ra\n", 3);
 	ft_insert_rn(b, r.score_b.first, "rb\n", 3);

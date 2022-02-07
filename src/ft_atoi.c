@@ -1,8 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 18:44:15 by eestelle          #+#    #+#             */
@@ -16,11 +15,6 @@ static int	ft_isspace(char c)
 {
 	return (c == '\f' || c == '\n' || c == '\r' ||
 			c == '\t' || c == '\v' || c == ' ');
-}
-
-static int	ft_issign(char c)
-{
-	return (c == '-' || c == '+');
 }
 
 static int	ft_isnum(char c)
@@ -38,9 +32,13 @@ int	ft_atoi(int64_t *ptr_res, char *res)
 	*ptr_res = 0;
 	while (ft_isspace(*res))
 		res++;
-	while (ft_issign(*res))
-		if (*(res++) == '-')
-			sign *= -1;
+	if (*res == '-')
+	{
+		++res;
+		sign *= -1;
+	}
+	if (*res == '\0')
+		return (4);
 	while (*res != '\0')
 	{
 		if (ft_isnum(*res))

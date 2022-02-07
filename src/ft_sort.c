@@ -26,17 +26,17 @@ static	t_stack	*ft_atob(t_stack *s, t_pair *mm)
 		top = ft_stktop(s);
 		if (top.second && mm->first != top.first && mm->second != top.first)
 		{
-			top = ft_stkpop(s);
-			if (top.second)
-			{
-				back = ft_stkback(res);
-				ft_stkpush(res, top.first, "pb\n", 3);
-				if (back.second && back.first < top.first)
-					ft_stkrr(res, "rb\n", 4);
-			}
+			ft_stkpop(s);
+			back = ft_stkback(res);
+			ft_stkpush(res, top.first, "pb\n", 3);
+			if (back.second && back.first < top.first)
+				ft_stkr(res, "rb\n", 3);
 		}
 		else
 			ft_stkr(s, "ra\n", 3);
+//	ft_print(s);
+//	ft_print(res);
+
 	}
 	return (res);
 }
@@ -62,11 +62,11 @@ static int	ft_btoa(t_stack *b, t_stack *a)
 		}
 		//ft_print_table_score(b, score);
 		ft_optimization(score, b->size);
-		//ft_print(a);
-		//ft_print(b);
-		//ft_print_table_score(b, score);
+//		ft_print(a);
+//		ft_print(b);
+//		ft_print_table_score(b, score);
 		j = ft_find_min_score(score, b);
-		//printf("min iter = %ld\n", b->arr[j]);
+//		printf("min iter = %ld\n", b->arr[j]);
 		ft_insert(a, b, &score[j]);
 	}
 	ft_score_clear(score);
@@ -79,7 +79,9 @@ int	ft_sort(t_stack *sta)
 	t_pair	mm; // min and max
 
 	mm = ft_stkmm(sta);
+//	ft_print(sta);
 	stb = ft_atob(sta, &mm);
+//	ft_print(stb);
 	ft_size_three(sta);
 	//ft_print(sta);
 	if (stb == NULL)
