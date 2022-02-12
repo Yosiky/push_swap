@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 15:05:11 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 16:07:09 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/13 00:45:22 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_score	*ft_score_init(size_t size)
 {
 	t_score	*s;
+	size_t	i;
 
 	s = (t_score *)malloc(sizeof(t_score) * size);
 	if (s == NULL)
@@ -22,6 +23,9 @@ t_score	*ft_score_init(size_t size)
 		free(s);
 		s = NULL;
 	}
+	i = 0;
+	while (i < size)
+		ft_init_zero(s + i++);
 	return (s);
 }
 

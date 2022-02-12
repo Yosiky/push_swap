@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 13:45:19 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 19:53:21 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/13 00:37:51 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_sort(t_stack *stk);
 void	ft_min_score_a(t_stack *s, int64_t value, t_pair *score);
 void	ft_min_score_b(t_stack *s, size_t value, t_pair *score);
 t_score	*ft_score_init(size_t size);
+void	ft_init_zero(t_score *s);
 int		ft_score_clear(t_score *score);
 void	ft_optimization(t_score *score, size_t size);
 size_t	ft_find_min_score(t_score *score, t_stack *stk);

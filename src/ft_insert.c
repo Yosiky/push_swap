@@ -6,13 +6,13 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:56:45 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/07 23:14:41 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/13 00:36:46 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static void	ft_init_zero(t_score *s)
+void	ft_init_zero(t_score *s)
 {
 	s->score_ab.first = 0;
 	s->score_ab.second = 0;
