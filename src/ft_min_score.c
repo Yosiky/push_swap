@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 15:43:23 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/07 22:44:40 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/13 01:01:32 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int64_t	ft_abs(int64_t value)
 	if (value > 0)
 		return (value);
 	return (-value);
-
 }
 
 void	ft_min_score_a(t_stack *s, int64_t value, t_pair *score)
@@ -47,18 +46,9 @@ void	ft_min_score_a(t_stack *s, int64_t value, t_pair *score)
 	{
 		j = (s->end + i) % s->size;
 		p = (s->end + i + 1) % s->size;
-	//	if (value >= 0)
-	//	{
-
-			if (s->arr[j] > value && value > s->arr[p])
-			{
-				i++;
-				break ;
-			}
-	//	}
-	//	else if (s->arr[j] < value)
-	//		break;
-		i++;
+		++i;
+		if (s->arr[j] > value && value > s->arr[p])
+			break ;
 	}
 	score->first = s->count - i;
 	score->second = i;
@@ -66,7 +56,7 @@ void	ft_min_score_a(t_stack *s, int64_t value, t_pair *score)
 
 void	ft_min_score_b(t_stack *s, size_t value, t_pair *score)
 {
-	score->second = value + 1; 
+	score->second = value + 1;
 	score->first = s->count - score->second;
 }
 
@@ -81,15 +71,12 @@ void	ft_optimization(t_score *s, size_t size)
 		s[i].score_ab.first = ft_min(s[i].score_a.first, s[i].score_b.first);
 		s[i].score_ab.second = ft_min(s[i].score_a.second, s[i].score_b.second);
 		s[i].sum = ft_max(s[i].score_a.first, s[i].score_b.first);
-		s[i].sum = ft_min(s[i].sum, ft_max(s[i].score_a.second, s[i].score_b.second));
-		s[i].sum = ft_min(s[i].score_a.first + s[i].score_b.first, s[i].score_a.second + s[i].score_b.second);
+		s[i].sum = ft_min(s[i].sum,
+				ft_max(s[i].score_a.second, s[i].score_b.second));
+		s[i].sum = ft_min(s[i].score_a.first + s[i].score_b.first,
+				s[i].score_a.second + s[i].score_b.second);
 		s[i].sum = ft_min(s[i].sum, s[i].score_a.first + s[i].score_b.second);
 		s[i].sum = ft_min(s[i].sum, s[i].score_b.first + s[i].score_a.second);
-		/*
-		s[i].sum = ft_min(s[i].sum, ft_max(s[i].score_a.second, s[i].score_b.second));
-		s[i].sum = ft_min(s[i].sum, s[i].score_a.first + s[i].score_b.second);
-		s[i].sum = ft_min(s[i].sum, s[i].score_b.first + s[i].score_a.second);
-		*/
 		++i;
 	}
 }

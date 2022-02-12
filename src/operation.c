@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:34:08 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/07 17:38:55 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/13 00:54:14 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_swap(int64_t *a, int64_t *b)
 
 void	ft_stks(t_stack *stk, const char *str, size_t len)
 {
-	if (stk->count >= 2) 
+	if (stk->count >= 2)
 	{
 		if (stk->begin == 0)
 			ft_swap(&(stk->arr[stk->size - 2]), &(stk->arr[stk->size - 1]));

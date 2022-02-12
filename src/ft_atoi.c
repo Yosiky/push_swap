@@ -1,11 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
-/*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestelle </var/spool/mail/eestelle>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 18:44:15 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/03 18:46:39 by eestelle         ###   ########.fr       */
+/*   Created: 2022/02/13 01:13:26 by eestelle          #+#    #+#             */
+/*   Updated: 2022/02/13 01:20:32 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -13,8 +14,8 @@
 
 static int	ft_isspace(char c)
 {
-	return (c == '\f' || c == '\n' || c == '\r' ||
-			c == '\t' || c == '\v' || c == ' ');
+	return (c == '\f' || c == '\n' || c == '\r'
+		|| c == '\t' || c == '\v' || c == ' ');
 }
 
 static int	ft_isnum(char c)
@@ -26,8 +27,6 @@ int	ft_atoi(int64_t *ptr_res, char *res)
 {
 	int64_t	sign;
 
-	if (res == NULL || ptr_res == NULL)
-		return (1);
 	sign = 1;
 	*ptr_res = 0;
 	while (ft_isspace(*res))

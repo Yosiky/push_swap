@@ -6,15 +6,14 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:18:00 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 14:14:09 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/13 01:23:39 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static void	init(t_stack *s, int64_t **a, size_t *b, size_t *e, size_t *c)
+static void	init(t_stack *s, size_t *b, size_t *e, size_t *c)
 {
-	*a = s->arr;
 	*b = s->begin - 1;
 	*e = s->end;
 	if (s->begin == 0)
@@ -22,6 +21,7 @@ static void	init(t_stack *s, int64_t **a, size_t *b, size_t *e, size_t *c)
 	*c = *b - 1;
 	if (s->begin == 1)
 		*c = s->size - 1;
+	return (s->arr);
 }
 
 void	ft_size_three(t_stack *stk)
@@ -31,7 +31,7 @@ void	ft_size_three(t_stack *stk)
 	size_t	end;
 	size_t	center;
 
-	init(stk, &arr, &begin, &end, &center);
+	arr = init(stk, &arr, &begin, &end, &center);
 	if (arr[end] > arr[begin] && arr[begin] > arr[center])
 		ft_stks(stk, "sa\n", 3);
 	else if (arr[begin] > arr[center] && arr[center] > arr[end])
