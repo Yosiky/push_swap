@@ -6,13 +6,13 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:18:00 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/13 01:23:39 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/13 01:29:25 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static void	init(t_stack *s, size_t *b, size_t *e, size_t *c)
+static int64_t	*init(t_stack *s, size_t *b, size_t *e, size_t *c)
 {
 	*b = s->begin - 1;
 	*e = s->end;
@@ -31,7 +31,7 @@ void	ft_size_three(t_stack *stk)
 	size_t	end;
 	size_t	center;
 
-	arr = init(stk, &arr, &begin, &end, &center);
+	arr = init(stk, &begin, &end, &center);
 	if (arr[end] > arr[begin] && arr[begin] > arr[center])
 		ft_stks(stk, "sa\n", 3);
 	else if (arr[begin] > arr[center] && arr[center] > arr[end])
