@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:56:45 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/13 00:56:57 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/13 15:49:56 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ static void	ft_update_sum(t_score *s)
 	s->sum += s->score_a.first + s->score_a.second;
 }
 
-static void	ft_copy(t_score *s, t_pair *a1, t_pair *a2, t_pair *b1, t_pair *b2)
+static void	ft_copy(t_pair *a1, t_pair *a2, t_pair *b1, t_pair *b2)
 {
-	ft_init_zero(s);
 	a1->first = a2->first;
 	b1->second = b2->second;
 }
@@ -40,20 +39,13 @@ static void	ft_copy(t_score *s, t_pair *a1, t_pair *a2, t_pair *b1, t_pair *b2)
 static void	ft_copy_min_way(t_score *r, t_score *s)
 {
 	ft_init_zero(r);
-	if (s->score_a.first < s->score_a.second)
-		r->score_a.first = s->score_a.first;
-	else
-		r->score_a.second = s->score_a.second;
-	if (s->score_b.first < s->score_b.second)
-		r->score_b.first = s->score_b.first;
-	else
-		r->score_b.second = s->score_b.second;
-	ft_update_sum(r);
-	if (r->sum > s->score_a.first + s->score_b.second)
-		ft_copy(r, &r->score_a, &s->score_a, &r->score_b, &s->score_b);
+	ft_copy(&r->score_a, &s->score_a, &r->score_b, &s->score_b);
 	ft_update_sum(r);
 	if (r->sum > s->score_b.first + s->score_a.second)
-		ft_copy(r, &r->score_b, &s->score_b, &r->score_a, &s->score_a);
+	{
+		ft_init_zero(r);
+		ft_copy(&r->score_b, &s->score_b, &r->score_a, &s->score_a);
+	}
 	ft_update_sum(r);
 	if (r->sum > ft_max(s->score_a.first, s->score_b.first))
 	{

@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 15:43:23 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/13 01:01:32 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/02/13 15:24:24 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ int64_t	ft_max(int64_t a, int64_t b)
 		return (a);
 	else
 		return (b);
-}
-
-int64_t	ft_abs(int64_t value)
-{
-	if (value > 0)
-		return (value);
-	return (-value);
 }
 
 void	ft_min_score_a(t_stack *s, int64_t value, t_pair *score)
