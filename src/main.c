@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eestelle </var/spool/mail/eestelle>        +#+  +:+       +#+        */
+/*   By: eestelle <eestelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:11:42 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/13 01:12:04 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/03/04 12:23:03 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_check_sort(t_stack *stk)
 	size_t	p;
 
 	i = 0;
-	if (stk == NULL)
+	if (stk == NULL || !stk->count)
 		return (0);
 	while (i < stk->count - 1)
 	{
@@ -71,6 +71,7 @@ int	main(int argc, char **argv)
 	{
 		write(2, "Error\n", 6);
 		ft_stkclear(stk);
+		stk = NULL;
 	}
 	if (ft_check_sort(stk))
 	{
