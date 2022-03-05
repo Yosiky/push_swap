@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 13:45:19 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/13 00:37:51 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/03/05 18:40:57 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 # define FT_PUSH_SWAP_H
 
 # include <unistd.h>
-# include <malloc.h>
+# ifdef __linux__
+#  include <malloc.h>
+# else
+#  include <stdlib.h>
+# endif
 # include <stdint.h>
 # include "ft_stack.h"
 
@@ -48,11 +52,8 @@ void	ft_insert_rr(t_stack *a, t_stack *b, int64_t count);
 void	ft_insert_rn(t_stack *s, int64_t count, const char *str, size_t len);
 void	ft_insert_rrn(t_stack *s, int64_t count, const char *str, size_t len);
 void	ft_offset(t_stack *s);
-
-//delete
-void	ft_print(t_stack *s);
-void	ft_print_arr(t_stack *s);
-void	ft_print_table_score(t_stack *s, t_score *score);
-void	ft_print_table_score_elem(t_score *score, size_t len);
+char	**ft_split(char *str, char c, int *len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	free_arr_string(char **str);
 
 #endif

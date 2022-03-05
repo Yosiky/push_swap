@@ -22,7 +22,9 @@ SRC				=	main				\
 					ft_insert			\
 					ft_insert_togher	\
 					ft_insert_r_rr		\
-					ft_offset
+					ft_offset			\
+					ft_split			\
+					ft_substr
 
 OBJ				=	$(addprefix $(DIR_OBJ)/,$(SRC:=.o))
 

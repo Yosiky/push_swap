@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 17:36:32 by eestelle          #+#    #+#             */
-/*   Updated: 2022/02/06 15:16:20 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/03/05 17:29:57 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@
 # include <stdint.h>
 # include <stddef.h>
 # include <unistd.h>
-# include <malloc.h>
 # include <stdlib.h>
+# ifdef __linux__
+#  include <malloc.h>
+# else
+#  include <stdlib.h>
+# endif
 
 typedef struct s_pair
 {

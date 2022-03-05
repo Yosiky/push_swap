@@ -6,33 +6,46 @@
 /*   By: eestelle <eestelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:11:42 by eestelle          #+#    #+#             */
-/*   Updated: 2022/03/04 12:23:03 by eestelle         ###   ########.fr       */
+/*   Updated: 2022/03/05 19:13:17 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static int	check_input_data(t_stack *stk, int count, char **str)
+static int	check_input_data(t_stack **stk, int count, char **str)
 {
 	int64_t	value;
+	char	**res;
+	int		flag;
 
-	if (stk == NULL)
-		return (0);
+	flag = 0;
+	if (count == 1)
+	{
+		flag = 1;
+		res = ft_split(str[0], ' ', &count);
+	}
+	else
+		res = str;
+	*stk = ft_stknew(count);
+	if (*stk == NULL)
+		exit(0);
 	while (count-- > 0)
 	{
-		if (ft_atoi(&value, str[count]))
+		if (ft_atoi(&value, res[count]))
 			return (2);
 		if (value <= -2147483649 || value >= 2147483648)
 			return (3);
-		if (ft_stkfind(stk, value))
+		if (ft_stkfind(*stk, value))
 			return (1);
 		else
-			ft_stkpush(stk, value, NULL, 0);
+			ft_stkpush(*stk, value, NULL, 0);
 	}
+	if (flag)
+		free_arr_string(res);
 	return (0);
 }
 
-void	ft_stk_offset(t_stack *s, int64_t offset)
+static void	ft_stk_offset(t_stack *s, int64_t offset)
 {
 	size_t	i;
 
@@ -41,7 +54,7 @@ void	ft_stk_offset(t_stack *s, int64_t offset)
 		s->arr[i++] += offset;
 }
 
-int	ft_check_sort(t_stack *stk)
+static int	ft_check_sort(t_stack *stk)
 {
 	size_t	i;
 	size_t	j;
@@ -66,8 +79,7 @@ int	main(int argc, char **argv)
 	t_stack	*stk;
 	int64_t	offset;
 
-	stk = ft_stknew(argc - 1);
-	if (check_input_data(stk, argc - 1, argv + 1))
+	if (check_input_data(&stk, argc - 1, argv + 1))
 	{
 		write(2, "Error\n", 6);
 		ft_stkclear(stk);
